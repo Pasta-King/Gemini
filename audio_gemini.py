@@ -6,6 +6,7 @@ import os
 import asyncio
 
 load_dotenv()
+
 async def main():
     client = genai.Client(
         api_key = os.getenv("GOOGLE_API_KEY"),
@@ -33,3 +34,5 @@ async def main():
                             inline_data = part.inline_data
                             audio_data = np.frombuffer(inline_data.data, dtype="int16")
                             audio_stream.write(audio_data)
+
+asyncio.run(main())
